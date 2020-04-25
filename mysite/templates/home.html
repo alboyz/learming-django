@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block title %} Index Page {% endblock %} 
+{% block body %}
+<h1>Welcome This Home Page</h1>
+    <p>
+        Framework in python 
+        {% for leng in list %} 
+        {{leng}} 
+        {%endfor%}
+    </p>
+    <p>
+        {{data.author}}
+        {{data.title}}
+        {{data.description}}    
+    </p>
+
+{% endblock %}
