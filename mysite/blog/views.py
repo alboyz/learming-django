@@ -1,27 +1,35 @@
 from django.shortcuts import HttpResponse, render
-from blog.models import News
+
+from .models import News
 
 
 def Index(request):
     context = {
-        "name" : "Ali"    
+        "name": "Ali"
     }
-    
+
     return render(request, "index.html",  context)
 
 
 def Home(request):
-    obj = News.objects.get(id=1)
+    obj = News.objects.filter()
     context = {
-        "list" : ["Django", "Flask", "Oddo"],
-        "data" : obj
+        "list": ["Django", "Flask", "Oddo"],
+        "data": obj
     }
-    return render(request,"home.html", context)
+    return render(request, "home.html", context)
 
 
 def Contact(request):
     return render(request, "contact.html")
 
+def NewsDate(request, year):
+    article_list = News.objects.filter(pub_date__year = year)
+    context ={
+        'year' : year,
+        'article_list' : article_list
+    }
+    return render(request, "NDate.html", context)
 
 def Crud(request):
     # create
@@ -54,3 +62,5 @@ def Crud(request):
     do.delete()
     '''
     return HttpResponse(res)
+
+

@@ -1,0 +1,9 @@
+{%block title%} Article For {{ year }} {%endblock%}
+{% block content %}
+    <h1>Article For {{year}} </h1>
+{% for ar in article_list %}
+    <p>{{ar.headline}} </p>
+    <p>By{{ar.reporter.full_name}} </p>
+    <p>Publsihed {{ar.pub_date}} </p>
+{% endfor %}
+{% endblock %}
